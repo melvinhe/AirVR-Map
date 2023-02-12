@@ -40,7 +40,7 @@ function addTree(jsonFeature) {
     var crownRadius = (tags.diameter_crown ? tags.diameter_crown : 3) / 2;
     // leaf_type is broadleaved, needleleaved, mixed or rarely something else.
     if (tags["leaf_type"] == "needleleaved") { // special shape for needle-leaved trees
-      var trunkHeight = height * 0.01;
+      var trunkHeight = height * 0.5;
       var crownHeight = height * 0.8;
       trunk.setAttribute("geometry", {primitive: "cylinder", height: trunkHeight, radius: trunkRadius});
       trunk.setAttribute("material", {color: "#b27f36"});
