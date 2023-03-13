@@ -165,7 +165,7 @@ function loadScene() {
   while (tiles.firstChild) { tiles.removeChild(tiles.firstChild); }
   while (items.firstChild) { items.removeChild(items.firstChild); }
   document.querySelector("#cameraRig").object3D.position.set(0, 0, 0);
-  loadGroundTiles();
+  //loadGroundTiles();
   loadTrees();
   //loadBuildings();
 }
