@@ -167,7 +167,7 @@ function loadScene() {
   document.querySelector("#cameraRig").object3D.position.set(0, 0, 0);
   loadGroundTiles();
   loadTrees();
-  loadBuildings();
+  //loadBuildings();
 }
 
 function getTagsForXMLFeature(xmlFeature) {
