@@ -14,7 +14,7 @@ var tileServer = "https://tilecache.kairo.at/mapnik/";
 // Basemap offers hires tiles for Austria.
 //var tileServer = "https://tilecache.kairo.at/basemaphires/";
 // Standard Overpass API Server
-var overpassURL = "https://overpass-api.de/api/interpreters";
+var overpassURL = "https://overpass-api.de/api/interpreter";
 
 window.onload = function() {
   // Close intro dialog on clicking its button.
