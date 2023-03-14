@@ -24,7 +24,6 @@
     <script src="trees.js"></script>
     <script src="buildings.js"></script>
     <script src="particles.js"></script>
-    <script src="digsites.js"></script>
   </head>
   <body>
     <div id="introDialog">
@@ -88,6 +87,8 @@
                   daydream-controls="hand: right;" gearvr-controls="hand: right;"></a-entity>
         <!-- menu -->
         <a-plane id="menu" color="#404040" position="0 2 -1" visible="false"></a-entity>
+        <!-- particle -->
+        <a-entity position="0 2.25 -15" particle-system="preset: dust; particleCount: 10000"></a-entity>
       </a-entity>
     </a-scene>
   </body>
