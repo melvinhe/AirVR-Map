@@ -36,14 +36,15 @@ remove: function() {
 });
 
 function loadAirParticles() {
-// Get the user's camera rig
-const cameraRig = document.querySelector('#camera-rig');
+    // Get the user's camera rig
+    const cameraRig = document.querySelector('#camera-rig');
 
-// Create the air-particles entity and set its position to the camera rig's position
-const airParticles = document.createElement('a-entity');
-airParticles.setAttribute('air-particles', '');
-airParticles.object3D.position.copy(cameraRig.object3D.position);
+    // Create the air-particles entity and set its position to the camera rig's position
+    const airParticles = document.createElement('a-entity');
+    airParticles.setAttribute('air-particles', '');
+    airParticles.setAttribute('render-order', '9999');
+    airParticles.object3D.position.copy(cameraRig.object3D.position);
 
-// Add the air-particles entity to the camera rig
-cameraRig.appendChild(airParticles);
+    // Add the air-particles entity to the camera rig
+    cameraRig.appendChild(airParticles);
 }
