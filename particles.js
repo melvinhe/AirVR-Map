@@ -1,61 +1,49 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this file,
- * You can obtain one at http://mozilla.org/MPL/2.0/. */
+AFRAME.registerComponent('air-particles', {
+schema: {
+    count: { type: 'int', default: 500 },
+    spread: { type: 'number', default: 5 },
+    color: { type: 'color', default: '#ffffff' }
+},
 
- function loadAirParticles() {
-    var opQuery = "node[natural=tree]" + "(" + getBoundingBoxString() + ");" +
-                  "out;";
-    return fetchFromOverpass(opQuery)
-      .then((itemJSON) => {
-        var count = 0;
-        for (feature of itemJSON.features) {
-          if (feature.geometry.type == "Point") {
-            addAirParticles(feature);
-            count++;
-          }
-          else {
-            console.log("Couldn't draw tree with geometry type " +
-                        feature.geometry.type + " (" + feature.id + ")");
-          }
-        }
-        console.log("Loaded " + count + " trees.");
-      })
-      .catch((reason) => { console.log(reason); });
-  }
-  
-  function addAirParticles(jsonFeature) {
-    return new Promise((resolve, reject) => {
-      var itemPos = tileposFromLatlon(latlonFromJSON(jsonFeature.geometry.coordinates));
-      var tags = jsonFeature.properties.tags ? jsonFeature.properties.tags : jsonFeature.properties;
-      var item = document.createElement("a-entity");
-      item.setAttribute("class", "tree");
-      item.setAttribute("data-reltilex", Math.floor(itemPos.x));
-      item.setAttribute("data-reltiley", Math.floor(itemPos.y));
-      var dust = document.createElement("a-entity");
-      dust.setAttribute("class", "dust");
-      var height = tags.height ? tags.height : 8;
-      var dustRadius = (tags.diameter_dust ? tags.diameter_dust : 3) / 2;
-      // leaf_type is broadleaved, needleleaved, mixed or rarely something else.
-      if (tags["leaf_type"] == "needleleaved") { // special shape for needle-leaved trees
-        var particleHeight = height * 0.5;
-        var dustHeight = height * 0.1;
-        dust.setAttribute("geometry", {primitive: "cone", height: dustHeight, radiusBottom: crownRadius, radiusTop: 0});
-        dust.setAttribute("material", {color: "#80ff80"});
-        dust.setAttribute("position", {x: 0, y: (height - dustHeight / 2), z: 0});
-      }
-      else { // use a simple typical broadleaved-type shape
-        var particleHeight = height - crownRadius;
-        
-        dust.setAttribute("geometry", {primitive: "sphere", radius: dustRadius});
-        dust.setAttribute("material", {color: "#80ff80"});
-        dust.setAttribute("position", {x: 0, y: particleHeight, z: 0});
-      }
-      item.setAttribute("position", getPositionFromTilepos(itemPos));
-      item.setAttribute("data-gpspos", jsonFeature.geometry.coordinates[1] + "/" + jsonFeature.geometry.coordinates[0]);
-      item.appendChild(dust);
-      items.appendChild(item);
-      resolve();
-      // reject("whatever the error");
-    });
-  }
-  
+init: function() {
+    // Create the particle system
+    this.particleSystem = new THREE.Group();
+
+    for (let i = 0; i < this.data.count; i++) {
+    // Create each particle as a sphere with random position and size
+    const particle = new THREE.Mesh(
+        new THREE.SphereGeometry(0.1 + Math.random() * 0.5),
+        new THREE.MeshBasicMaterial({ color: this.data.color })
+    );
+    particle.position.set(
+        Math.random() * this.data.spread - this.data.spread / 2,
+        Math.random() * this.data.spread - this.data.spread / 2,
+        Math.random() * this.data.spread - this.data.spread / 2
+    );
+
+    // Add the particle to the particle system group
+    this.particleSystem.add(particle);
+    }
+
+    // Add the particle system to the scene
+    this.el.sceneEl.object3D.add(this.particleSystem);
+},
+
+remove: function() {
+    // Remove the particle system from the scene
+    this.el.sceneEl.object3D.remove(this.particleSystem);
+}
+});
+
+function loadAirParticles() {
+// Get the user's camera rig
+const cameraRig = document.querySelector('#camera-rig');
+
+// Create the air-particles entity and set its position to the camera rig's position
+const airParticles = document.createElement('a-entity');
+airParticles.setAttribute('air-particles', '');
+airParticles.object3D.position.copy(cameraRig.object3D.position);
+
+// Add the air-particles entity to the camera rig
+cameraRig.appendChild(airParticles);
+}
