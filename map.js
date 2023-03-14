@@ -169,7 +169,7 @@ function loadScene() {
   loadTrees();
   loadBuildings();
   loadAirParticles();
-  loadDigSites();
+  //loadDigSites();
 }
 
 function getTagsForXMLFeature(xmlFeature) {
