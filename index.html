@@ -64,10 +64,9 @@
       </p>
     </div>
     <a-scene background="color: #CFEBFD">
+      <a-entity position="0 2.25 -15" particle-system="preset: dust; particleCount: 10000"></a-entity>
       <a-entity id="ground" geometry="primitive: box; width: 2000; height: 0.01; depth: 2000;" position="0 -0.01 0" material="transparent: true; opacity: 0.01;"></a-entity>
       <a-entity id="map">
-        <a-entity position="0 2.25 -15" particle-system="preset: dust; particleCount: 10000">
-        </a-entity>
         <a-entity id="tiles">
         </a-entity>
         <a-entity id="items">
