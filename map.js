@@ -168,6 +168,7 @@ function loadScene() {
   loadGroundTiles();
   loadTrees();
   loadBuildings();
+  loadAirParticles();
   loadDigSites();
 }
 
