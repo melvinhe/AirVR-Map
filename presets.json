@@ -47,20 +47,20 @@
     "longitude": 16.37911
   },
   { "title": "New York Plaza",
-    "latitude": 40.70245,
-    "longitude": -74.01282
+    "latitude": 40.6943,
+    "longitude": -73.9249
   },
   { "title": "San Francisco Market & Drumm",
-    "latitude": 37.79375,
-    "longitude": -122.39587
+    "latitude": 37.7562,
+    "longitude": -122.443
   },
   { "title": "SJ South Market Park",
     "latitude": 37.33226,
     "longitude": -121.88968
   },
   { "title": "Vegas Mirage",
-    "latitude": 36.12167,
-    "longitude": -115.17204
+    "latitude": 36.2333,
+    "longitude": -115.2654
   },
   { "title": "Koeln Dom",
     "latitude": 50.94130,
@@ -90,8 +90,16 @@
     "latitude": 52.23242,
     "longitude": 21.00913
   },
-  { "title": "Tokio",
-    "latitude": 35.69091,
-    "longitude": 139.69481
-  }
+  {
+    "title": "Tokyo",
+    "latitude": 35.6897,
+    "longitude": 139.6922,
+    "CO": 0.713,
+    "NO2": 8.65,
+    "OZONE": 29.719,
+    "PM10": 4.061,
+    "PM25": 2.77,
+    "SO2": 4.685,
+    "AQI": 28.0
+  }  
 ]
