@@ -1,4 +1,39 @@
 [
+  {
+    "title": "Brown Main Green",
+    "latitude": 41.826177,
+    "longitude": -71.403273
+  },
+  {
+    "title": "SciLi/CIT",
+    "latitude": 41.826699,
+    "longitude": -71.400119
+  },
+  {
+    "title": "Outside Grad Center",
+    "latitude": 41.822952,
+    "longitude": -71.400633
+  },
+  {
+    "title": "Pembroke Quad/Outside Andrews",
+    "latitude": 41.829893,
+    "longitude": -71.402465
+  },
+  {
+    "title": "Prospect Terrace",
+    "latitude": 41.829829,
+    "longitude": -71.406989
+  },
+  {
+    "title": "Rhode Island State House",
+    "latitude": 41.829869,
+    "longitude": -71.415097
+  },
+  {
+    "title": "Block Island",
+    "latitude": 41.17331,
+    "longitude": -71.55747
+  },
   { "title": "Wien Gaudenzdorf",
     "latitude": 48.18594,
     "longitude": 16.34177

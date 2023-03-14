@@ -168,6 +168,7 @@ function loadScene() {
   loadGroundTiles();
   loadTrees();
   loadBuildings();
+  loadDigSites();
 }
 
 function getTagsForXMLFeature(xmlFeature) {
@@ -182,11 +183,11 @@ function getTagsForXMLFeature(xmlFeature) {
 
 function getBoundingBoxString() {
   var startPos = latlonFromTileID({x: baseTileID.x - tilesFromCenter,
-                                   y: baseTileID.y + tilesFromCenter + 1});
+                                  y: baseTileID.y + tilesFromCenter + 1});
   var endPos = latlonFromTileID({x: baseTileID.x + tilesFromCenter + 1,
-                                 y: baseTileID.y - tilesFromCenter});
+                                y: baseTileID.y - tilesFromCenter});
   return startPos.latitude + "," + startPos.longitude + "," +
-         endPos.latitude + "," + endPos.longitude;
+        endPos.latitude + "," + endPos.longitude;
 }
 
 function fetchFromOverpass(opQuery) {
